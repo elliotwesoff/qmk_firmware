@@ -5,7 +5,7 @@
 #define _NUMPAD 2
 #define _GAMING 3
 #define _REAPER 4
-#define _SPECIAL 5
+#define _SECRET 5
 
 enum custom_keycodes {
   MAIN = SAFE_RANGE,
@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LAYER_DOWN, _______,     _______,      LAYER_UP \
   ),
 
-  [_SPECIAL] = LAYOUT_ortho_4x4(
+  [_SECRET] = LAYOUT_ortho_4x4(
     APOCALYPSE, PI,          _______,      ONEPASS, \
     _______,    _______,     _______,      _______, \
     _______,    _______,     _______,      _______, \
