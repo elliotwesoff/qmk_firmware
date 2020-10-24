@@ -67,3 +67,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Set right column, left macro, 1.75u shift, and 5x1u on by default
 #define VIA_EEPROM_LAYOUT_OPTIONS_DEFAULT 0x00D4
 #define VIA_EEPROM_LAYOUT_OPTIONS_SIZE 2
+
+#define COMBO_COUNT 3
+#define COMBO_TERM 500
