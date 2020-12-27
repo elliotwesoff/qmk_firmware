@@ -1,11 +1,11 @@
 #include QMK_KEYBOARD_H
 
-#define _BASE 0
-#define _FNS 1
-#define _NUMPAD 2
-#define _GAMING 3
-#define _REAPER 4
-#define _SPECIAL 5
+// #define _BASE 0
+// #define _FNS 1
+// #define _GAMING 3
+#define _REAPER 0
+#define _NUMPAD 1
+#define _SPECIAL 2
 
 enum custom_keycodes {
   MAIN = SAFE_RANGE,
@@ -26,19 +26,11 @@ enum custom_keycodes {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-
-  [_BASE] = LAYOUT_ortho_4x4(
-    WIN_SCN_LFT, POP_SCN_DN, POP_SCN_UP, WIN_SCN_RT, \
-    KC_TILDE,    KC_LBRC,    KC_RBRC,    KC_BSLS,    \
-    KC_MUTE,     KC_VOLD,    KC_VOLU,    KC_MPLY,    \
-    KC_LGUI,     KC_LALT,    KC_TAB,     LAYER_UP    \
-  ),
-
-  [_FNS] = LAYOUT_ortho_4x4(
-    KC_F1,      KC_F2,       KC_F3,        KC_F4,   \
-    KC_F5,      KC_F6,       KC_F7,        KC_F8,   \
-    KC_F9,      KC_F10,      KC_F11,       KC_F12,  \
-    LAYER_DOWN, LCTL(KC_F8), LSFT(KC_F11), LAYER_UP \
+  [_REAPER] = LAYOUT_ortho_4x4(
+    LCTL(KC_R),    KC_SPACE,   KC_HOME,  KC_R, \
+    LCTL(KC_LEFT), UNDO,       REDO,     LCTL(KC_RIGHT), \
+    LSFT(KC_M),    KC_MINUS,   KC_PLUS,  KC_EXCLAIM, \
+    KC_LGUI,      KC_DELETE,   KC_ENTER, LAYER_UP \
   ),
 
   [_NUMPAD] = LAYOUT_ortho_4x4(
@@ -46,20 +38,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_P4,      KC_P5, KC_P6,      KC_KP_MINUS, \
     KC_P1,      KC_P2, KC_P3,      KC_DOT,      \
     LAYER_DOWN, KC_P0, KC_NUMLOCK, LAYER_UP     \
-  ),
-
-  [_GAMING] = LAYOUT_ortho_4x4(
-    KC_VOLD,      KC_VOLU,     DISCORD_MUTE, COD_PING, \
-    WIN_SCN_LFT,  WIN_SCN_RT,  _______,      KC_MUTE,  \
-    _______,      _______,     _______,      _______,  \
-    LAYER_DOWN,   _______,     _______,      LAYER_UP  \
-  ),
-
-  [_REAPER] = LAYOUT_ortho_4x4(
-    LCTL(KC_R), KC_SPACE,    KC_HOME,      KC_R,    \
-    UNDO,       REDO,        _______,      _______, \
-    _______,    _______,     _______,      _______, \
-    LAYER_DOWN, _______,     _______,      LAYER_UP \
   ),
 
   [_SPECIAL] = LAYOUT_ortho_4x4(
