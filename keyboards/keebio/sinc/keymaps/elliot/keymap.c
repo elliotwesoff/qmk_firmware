@@ -50,7 +50,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         unregister_code16(KC_LGUI);
       }
       break;
-    case M5:
+    case M3:
       if (record->event.pressed) {
         send_string(ONEPASS);
       }
