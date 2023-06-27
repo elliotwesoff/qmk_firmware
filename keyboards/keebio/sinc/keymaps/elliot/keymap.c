@@ -1,9 +1,5 @@
 #include QMK_KEYBOARD_H
 
-// note to future self:
-// the blank space on the bottom left half of the board - second from the bottom right
-// will *not* fire no matter what keycode you put in there. instead, it will trigger
-// whichever custom keycode you have defined first in this enum. danny help!
 enum custom_keycodes {
   M1, M2, M3, M4, M5, M6, M7, M8, M9, M10
 };
