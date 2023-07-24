@@ -64,29 +64,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
   // notes:
-  // * led_min + 1 lights up an underglow light directly beneath F1... ???
+  // * led_min + 1, 4 lights up an underglow light directly beneath F1... ???
   // * this function gets called repeatedly and very fast.
 
-  // TODO: turn these into separate if-statements so the LEDs can
-  // all shine simulataneously. but how does layer_state work?
-  // we need to make it work without using get_highest_layer.
-  switch(get_highest_layer(layer_state|default_layer_state)) {
-    case 3:
-      rgb_matrix_set_color(led_min + 5, RGB_GREEN); // F3
-      break;
-    case 2:
-      rgb_matrix_set_color(led_min + 3, RGB_BLUE); // F2
-      break;
-    case 1:
-      rgb_matrix_set_color(led_min + 2, RGB_YELLOW); // F1
-      break;
-    default:
-      break;
+  if (layer_state_is(1)) {
+    rgb_matrix_set_color(led_min + 2, RGB_YELLOW); // F1
+  }
+
+  if (layer_state_is(2)) {
+    rgb_matrix_set_color(led_min + 3, RGB_BLUE); // F2
+  }
+
+  if (layer_state_is(3)) {
+    rgb_matrix_set_color(led_min + 5, RGB_GREEN); // F3
   }
 
   if (host_keyboard_led_state().caps_lock) {
     rgb_matrix_set_color(led_min, RGB_RED); // ESC
   }
+
   return false;
 }
 
