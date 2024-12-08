@@ -3,7 +3,6 @@
 
 #pragma once
 
-#include "secrets.h"
 
 #define SPLIT_HAND_PIN GP4
 #define USB_VBUS_PIN GP14
