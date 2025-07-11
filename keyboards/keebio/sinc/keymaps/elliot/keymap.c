@@ -1,7 +1,6 @@
-#include <stdbool.h>
 #include QMK_KEYBOARD_H
+#include <stdbool.h>
 #include "secrets.h"
-
 
 enum custom_keycodes {
   M1, M2, M3, M4, M5, M6, M7, M8, M9, M10
@@ -20,7 +19,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [1] = LAYOUT_80_with_macro(
     _______,    QK_BOOT, _______, TG(2),   TG(3),   _______, _______, _______, _______, _______, _______,  _______, _______, _______,          KC_PSCR,   _______,
-    M9, M10,    RGB_TOG, _______, _______, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, KC_DELETE, _______,
+    M9, M10,    RGB_TOG, RM_PREV, RM_NEXT, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, KC_DELETE, _______,
     M7, M8,     RGB_MOD, RGB_VAD, RGB_VAI, _______, _______, _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______,
     M5, M6,     KC_CAPS, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, _______, _______,          _______, _______,
     M3, M4,     _______,          _______, _______, _______, _______, _______, _______, _______, KC_HOME,  KC_END,  _______, _______, KC_VOLU, _______,
@@ -46,6 +45,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+    case M1:
+      if (record->event.pressed) {
+        send_string_with_delay(PPTUSER, 10);
+        tap_code_delay(KC_TAB, 20);
+        send_string_with_delay(PPTPASS, 10);
+        tap_code_delay(KC_ENTER, 20);
+      }
+      break;
     case M4:
       if (record->event.pressed) {
         send_string(ONEPASS);
