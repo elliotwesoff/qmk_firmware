@@ -91,9 +91,17 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         if (clockwise) {
-            tap_code(layer_state_is(2) ? KC_LEFT : KC_PGUP);
+            if (layer_state_is(2)) {
+                tap_code16(LCTL(LGUI(KC_LEFT)));
+            } else {
+                tap_code(QK_MOUSE_WHEEL_UP);
+            }
         } else {
-            tap_code(layer_state_is(2) ? KC_RIGHT : KC_PGDN);
+            if (layer_state_is(2)) {
+                tap_code16(LCTL(LGUI(KC_RIGHT)));
+            } else {
+                tap_code(QK_MOUSE_WHEEL_DOWN);
+            }
         }
     } else if (index == 1) {
         if (clockwise) {
